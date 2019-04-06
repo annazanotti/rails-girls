@@ -1,15 +1,19 @@
 class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :update, :destroy]
-
+    
   # GET /ideas
   # GET /ideas.json
   def index
     @ideas = Idea.all
+
   end
 
   # GET /ideas/1
   # GET /ideas/1.json
   def show
+     #onde é isso?????? show method???
+    @comments = @idea.comments.all
+    @comment = @idea.comments.build
   end
 
   # GET /ideas/new
@@ -25,6 +29,7 @@ class IdeasController < ApplicationController
   # POST /ideas.json
   def create
     @idea = Idea.new(idea_params)
+
 
     respond_to do |format|
       if @idea.save
